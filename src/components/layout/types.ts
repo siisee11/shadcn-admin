@@ -36,8 +36,7 @@ interface NavGroup {
 }
 
 interface SidebarData {
-  user: User
-  teams: Team[]
+  user: User 
   navGroups: NavGroup[]
 }
 

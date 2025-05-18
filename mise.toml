@@ -1,0 +1,11 @@
+[tools]
+"aqua:astral-sh/uv" = "latest"
+"asdf:mise-plugins/mise-1password-cli" = "latest"
+bun = "1.2.13"
+node = "22"
+"npm:@antfu/ni" = "latest"
+rust = "latest"
+"ubi:jkfran/killport" = "latest"
+
+[env]
+_.path = "./"

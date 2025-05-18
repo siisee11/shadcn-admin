@@ -51,6 +51,7 @@ const data = [
   },
 ]
 
+// <agent>This is an example of a bar chart. You can use this as a reference to create more charts.</agent>
 export function Overview() {
   return (
     <ResponsiveContainer width='100%' height={350}>
