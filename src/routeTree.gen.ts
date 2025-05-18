@@ -28,6 +28,7 @@ import { Route as AuthenticatedUsersIndexImport } from './routes/_authenticated/
 import { Route as AuthenticatedSettingsIndexImport } from './routes/_authenticated/settings/index'
 import { Route as AuthenticatedHelpCenterIndexImport } from './routes/_authenticated/help-center/index'
 import { Route as AuthenticatedUsersSecurityImport } from './routes/_authenticated/users/security'
+import { Route as AuthenticatedUsersAnomalyDetectionImport } from './routes/_authenticated/users/anomaly-detection'
 import { Route as AuthenticatedSettingsAccountImport } from './routes/_authenticated/settings/account'
 
 // Create/Update Routes
@@ -140,6 +141,13 @@ const AuthenticatedUsersSecurityRoute = AuthenticatedUsersSecurityImport.update(
   } as any,
 )
 
+const AuthenticatedUsersAnomalyDetectionRoute =
+  AuthenticatedUsersAnomalyDetectionImport.update({
+    id: '/users/anomaly-detection',
+    path: '/users/anomaly-detection',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+
 const AuthenticatedSettingsAccountRoute =
   AuthenticatedSettingsAccountImport.update({
     id: '/account',
@@ -249,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsAccountImport
       parentRoute: typeof AuthenticatedSettingsRouteImport
     }
+    '/_authenticated/users/anomaly-detection': {
+      id: '/_authenticated/users/anomaly-detection'
+      path: '/users/anomaly-detection'
+      fullPath: '/users/anomaly-detection'
+      preLoaderRoute: typeof AuthenticatedUsersAnomalyDetectionImport
+      parentRoute: typeof AuthenticatedRouteImport
+    }
     '/_authenticated/users/security': {
       id: '/_authenticated/users/security'
       path: '/users/security'
@@ -301,6 +316,7 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedUsersAnomalyDetectionRoute: typeof AuthenticatedUsersAnomalyDetectionRoute
   AuthenticatedUsersSecurityRoute: typeof AuthenticatedUsersSecurityRoute
   AuthenticatedHelpCenterIndexRoute: typeof AuthenticatedHelpCenterIndexRoute
   AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
@@ -309,6 +325,8 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedUsersAnomalyDetectionRoute:
+    AuthenticatedUsersAnomalyDetectionRoute,
   AuthenticatedUsersSecurityRoute: AuthenticatedUsersSecurityRoute,
   AuthenticatedHelpCenterIndexRoute: AuthenticatedHelpCenterIndexRoute,
   AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
@@ -332,6 +350,7 @@ export interface FileRoutesByFullPath {
   '/503': typeof errors503Route
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
+  '/users/anomaly-detection': typeof AuthenticatedUsersAnomalyDetectionRoute
   '/users/security': typeof AuthenticatedUsersSecurityRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
@@ -351,6 +370,7 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
+  '/users/anomaly-detection': typeof AuthenticatedUsersAnomalyDetectionRoute
   '/users/security': typeof AuthenticatedUsersSecurityRoute
   '/help-center': typeof AuthenticatedHelpCenterIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
@@ -373,6 +393,7 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
+  '/_authenticated/users/anomaly-detection': typeof AuthenticatedUsersAnomalyDetectionRoute
   '/_authenticated/users/security': typeof AuthenticatedUsersSecurityRoute
   '/_authenticated/help-center/': typeof AuthenticatedHelpCenterIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
@@ -396,6 +417,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/'
     | '/settings/account'
+    | '/users/anomaly-detection'
     | '/users/security'
     | '/help-center'
     | '/settings/'
@@ -414,6 +436,7 @@ export interface FileRouteTypes {
     | '/503'
     | '/'
     | '/settings/account'
+    | '/users/anomaly-detection'
     | '/users/security'
     | '/help-center'
     | '/settings'
@@ -434,6 +457,7 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/'
     | '/_authenticated/settings/account'
+    | '/_authenticated/users/anomaly-detection'
     | '/_authenticated/users/security'
     | '/_authenticated/help-center/'
     | '/_authenticated/settings/'
@@ -497,6 +521,7 @@ export const routeTree = rootRoute
       "children": [
         "/_authenticated/settings",
         "/_authenticated/",
+        "/_authenticated/users/anomaly-detection",
         "/_authenticated/users/security",
         "/_authenticated/help-center/",
         "/_authenticated/users/"
@@ -547,6 +572,10 @@ export const routeTree = rootRoute
     "/_authenticated/settings/account": {
       "filePath": "_authenticated/settings/account.tsx",
       "parent": "/_authenticated/settings"
+    },
+    "/_authenticated/users/anomaly-detection": {
+      "filePath": "_authenticated/users/anomaly-detection.tsx",
+      "parent": "/_authenticated"
     },
     "/_authenticated/users/security": {
       "filePath": "_authenticated/users/security.tsx",

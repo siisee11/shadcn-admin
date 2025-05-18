@@ -1,14 +1,11 @@
 import {
-  IconBrowserCheck,
   IconHelp,
   IconLayoutDashboard,
-  IconNotification,
-  IconPalette,
   IconSettings,
   IconTool,
-  IconUserCog,
   IconUsers,
   IconLock,
+  IconAlertTriangle,
 } from '@tabler/icons-react'
 import { type SidebarData } from '../types'
 
@@ -40,6 +37,11 @@ export const sidebarData: SidebarData = {
               title: 'Security',
               url: '/users/security',
               icon: IconLock,
+            },
+            {
+              title: 'Anomaly Detection',
+              url: '/users/anomaly-detection',
+              icon: IconAlertTriangle,
             },
           ],
         },
