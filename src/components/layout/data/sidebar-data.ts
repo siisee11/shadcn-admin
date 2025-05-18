@@ -8,6 +8,7 @@ import {
   IconTool,
   IconUserCog,
   IconUsers,
+  IconLock,
 } from '@tabler/icons-react'
 import { type SidebarData } from '../types'
 
@@ -28,8 +29,19 @@ export const sidebarData: SidebarData = {
         },
         {
           title: 'Users',
-          url: '/users',
           icon: IconUsers,
+          items: [
+            {
+              title: 'All Users',
+              url: '/users',
+              icon: IconUsers,
+            },
+            {
+              title: 'Security',
+              url: '/users/security',
+              icon: IconLock,
+            },
+          ],
         },
         // <agent>Add more pages here</agent>
       ],
